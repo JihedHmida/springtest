@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  myapp-mysql:
+    image: mysql:8.0
+    container_name: magasin-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=MyAppDb
+      - MYSQL_USER=myapp-user
+      - MYSQL_PASSWORD=password
+    ports:
+      - 3306:3306
+    networks:
+      magasin-net:
+        ipv4_address: 172.25.0.2
+
+  myapp-main:
+    image: magasin-image
+    container_name: magasin
+    restart: on-failure
+    depends_on:
+      - myapp-mysql
+    ports:
+      - 8888:8080
+    environment:
+      - DATABASE_HOST=myapp-mysql
+      - DATABASE_USER=myapp-user
+      - DATABASE_PASSWORD=password
+      - DATABASE_NAME=MyAppDb
+      - DATABASE_PORT=3306
+    networks:
+      magasin-net:
+                ipv4_address: 172.25.0.3
+                
+networks:
+  magasin-net:
+    external: true
