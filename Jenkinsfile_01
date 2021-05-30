@@ -11,7 +11,7 @@ pipeline {
                 sh "mvn -version"
                 sh "mvn clean install"
                 
-                sh "pwd"
+                sh 'docker build . -t magasin-image'
             }
         }
     }
