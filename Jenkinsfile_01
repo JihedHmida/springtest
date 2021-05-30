@@ -13,12 +13,12 @@ pipeline {
                 sh "mvn -version"
                 sh "mvn clean install"
                 
-                sh 'docker build . -t magasin-image'
             }
         }
         stage('Deploy') {
         	steps {
-        		
+        		                sh 'docker build . -t magasin-image'
+
         	}
         }
     }
