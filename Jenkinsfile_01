@@ -24,7 +24,7 @@ pipeline {
         always {
             sh "rm -rf /home/kvm/maven-pipeline-demo-1.0-SNAPSHOT.jar"
             sh "cp /var/lib/jenkins/workspace/Spring/target/maven-pipeline-demo-1.0-SNAPSHOT.jar  /home/kvm/jar/maven-pipeline-demo-1.0-SNAPSHOT.jar"
-            cleanWs()
+     
         }
     }
    
