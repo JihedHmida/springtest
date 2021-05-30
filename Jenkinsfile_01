@@ -24,8 +24,8 @@ pipeline {
     }
     post {
         always {
-            sh "rm -rf /home/kvm/${App}/${App}.jar"
-            sh "cp /var/lib/jenkins/workspace/Spring/target/*.jar  /home/kvm/${App}/${App}.jar"
+            sh "rm -rf /home/kvm/jar/${App}/${App}.jar"
+            sh "cp /var/lib/jenkins/workspace/Spring/target/*.jar  /home/kvm/jar/${App}/${App}.jar"
      
         }
     }
